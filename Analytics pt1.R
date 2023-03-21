@@ -39,3 +39,63 @@ A3
 r = A;
 r(:, 3) = r(:, 2) + r(:, 3);
 r
+      
+#question 6
+
+
+# Required library for ships dataset
+install.packages("MASS")
+
+# Required for melt() and cast() function
+install.packages("reshape2")
+install.packages("reshape")
+
+#Loading the libraries
+library(MASS)
+library(reshape2)
+library(reshape)
+
+# Create dataframe
+n <- c(1, 1, 2, 2)
+time <- c(1, 2, 1, 2)
+x <- c(6, 3, 2, 5)
+y <- c(1, 4, 6, 9)
+df <- data.frame(n, time, x, y)
+
+# Original data frame
+cat("Original data frame:\n")
+print(df)
+
+# Organize data w.r.t. n and time
+molten.data <- melt(df, id = c("n","time"))
+
+cat("\nAfter melting data frame:\n")
+print(molten.data)
+
+
+# question 7
+
+L <- c(2.1, 3.4, 2.5, 2.7, 2.9)
+D <- c(0.3, 0.5, 0.6, 0.9, 1.1)
+
+#corelation
+
+cor(L, D)
+
+#volume
+V <- L * pi * (D / 2) ^ 2
+V
+
+#standard deviation 
+
+mean(V)
+sd(V)
+sd(V) / mean(V)
+
+#question 8
+
+marbles.probability <- function(r, b, n, x) {
+  choose(r, x) * choose(b, n - x) / choose(r + b, n)
+}
+
+marbles.probability(8, 9, 5, 2)
